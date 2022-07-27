@@ -1,17 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import WebFont from 'webfontloader'
+import Container from './elements/Container'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import EditExpense from './components/EditExpense'
+import ExpensesByCategory from './components/ExpensesByCategory'
+import Login from './components/Login'
+import ExpensesList from './components/ExpensesList'
+import Register from './components/Register'
+import { Helmet } from 'react-helmet'
+import favicon from './img/logo.png'
+import Background from './elements/Background'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+WebFont.load({
+	google: {
+		families: ['Work Sans:400,500,700', 'sans-Serif'],
+	},
+})
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const Index = () => {
+	return (
+		<>
+			<Helmet>
+				<link rel='shortcut icon' href={favicon} type='image/x-icon' />
+			</Helmet>
+			<BrowserRouter>
+				<Container>
+					<Routes>
+						<Route path='/login' element={<Login />} />
+						<Route path='/register' element={<Register />} />
+						<Route path='/categories' element={<ExpensesByCategory />} />
+						<Route path='/list' element={<ExpensesList />} />
+						<Route path='/edit/:id' element={<EditExpense />} />
+						<Route path='/' element={<App />} />
+					</Routes>
+				</Container>
+			</BrowserRouter>
+			<Background />
+		</>
+	)
+}
+
+ReactDOM.render(<Index />, document.getElementById('root'))
+
+// const root = ReactDOM.createRoot(document.getElementById('root'))
+// root.render(
+
+// )
