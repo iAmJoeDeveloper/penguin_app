@@ -45,8 +45,6 @@ const Register = () => {
 		setEstadoAlerta(false)
 		setAlerta({})
 
-		console.log(email, password, password2)
-
 		//validation Email
 		const regularExpresion = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/
 
