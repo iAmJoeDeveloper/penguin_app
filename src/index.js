@@ -13,6 +13,7 @@ import Register from './components/Register'
 import { Helmet } from 'react-helmet'
 import favicon from './img/logo.png'
 import Background from './elements/Background'
+import { AuthProvider } from './context/AuthContext'
 
 WebFont.load({
 	google: {
@@ -26,18 +27,21 @@ const Index = () => {
 			<Helmet>
 				<link rel='shortcut icon' href={favicon} type='image/x-icon' />
 			</Helmet>
-			<BrowserRouter>
-				<Container>
-					<Routes>
-						<Route path='/login' element={<Login />} />
-						<Route path='/register' element={<Register />} />
-						<Route path='/categories' element={<ExpensesByCategory />} />
-						<Route path='/list' element={<ExpensesList />} />
-						<Route path='/edit/:id' element={<EditExpense />} />
-						<Route path='/' element={<App />} />
-					</Routes>
-				</Container>
-			</BrowserRouter>
+			<AuthProvider>
+				<BrowserRouter>
+					<Container>
+						<Routes>
+							<Route path='/login' element={<Login />} />
+							<Route path='/register' element={<Register />} />
+							<Route path='/categories' element={<ExpensesByCategory />} />
+							<Route path='/list' element={<ExpensesList />} />
+							<Route path='/edit/:id' element={<EditExpense />} />
+							<Route path='/' element={<App />} />
+						</Routes>
+					</Container>
+				</BrowserRouter>
+			</AuthProvider>
+
 			<Background />
 		</>
 	)
