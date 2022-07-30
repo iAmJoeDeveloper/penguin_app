@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Header, Title, ContainerHeader, ContainerButtons } from './elements/Header'
 import Button from './elements/Button'
 import CloseSesionButton from './elements/CloseSesionButton'
+import ExpenseForm from './components/ExpenseForm'
 
 const App = () => {
 	return (
@@ -20,6 +21,8 @@ const App = () => {
 					</ContainerButtons>
 				</ContainerHeader>
 			</Header>
+
+			<ExpenseForm />
 		</>
 	)
 }

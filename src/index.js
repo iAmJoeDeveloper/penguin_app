@@ -68,11 +68,6 @@ const Index = () => {
 									</PrivateRoute>
 								}
 							/>
-
-							{/* <Route path='/categories' element={<ExpensesByCategory />} />
-							<Route path='/list' element={<ExpensesList />} />
-							<Route path='/edit/:id' element={<EditExpense />} />
-							<Route path='/' element={<App />} /> */}
 						</Routes>
 					</Container>
 				</BrowserRouter>
