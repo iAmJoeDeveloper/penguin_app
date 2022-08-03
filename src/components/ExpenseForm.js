@@ -9,11 +9,13 @@ import {
 import Button from '../elements/Button'
 import { ReactComponent as IconoPlus } from '../img/plus.svg'
 import SelectCategories from './SelectCategories'
+import DatePicker from './DatePicker'
 
 const ExpenseForm = () => {
 	const [inputDescription, setInputDescription] = useState('')
 	const [inputCantidad, setInputCantidad] = useState('')
 	const [categoria, setCategoria] = useState('hogar')
+	const [date, setFecha] = useState(new Date())
 
 	const handleChange = (e) => {
 		if (e.target.name === 'description') {
@@ -27,7 +29,7 @@ const ExpenseForm = () => {
 		<Form>
 			<FiltersContainer>
 				<SelectCategories categoria={categoria} setCategoria={setCategoria} />
-				<p>Date Picker</p>
+				<DatePicker date={date} setFecha={setFecha} />
 			</FiltersContainer>
 			<div>
 				<Input
