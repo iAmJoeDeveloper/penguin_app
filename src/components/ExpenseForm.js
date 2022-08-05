@@ -14,12 +14,17 @@ import fromUnixTime from 'date-fns/fromUnixTime'
 import getUnixTime from 'date-fns/getUnixTime'
 import addExpense from '../firebase/addExpense'
 import { useAuth } from '../context/AuthContext'
+import Alert from '../elements/Alert'
+import { setDate } from 'date-fns'
 
 const ExpenseForm = () => {
 	const [inputDescription, setInputDescription] = useState('')
 	const [inputCantidad, setInputCantidad] = useState('')
 	const [categoria, setCategoria] = useState('hogar')
 	const [date, setFecha] = useState(new Date())
+	const [estadoAlerta, setEstadoAlerta] = useState(false)
+	const [alerta, setAlerta] = useState({})
+
 	const { usuario } = useAuth()
 
 	const handleChange = (e) => {
@@ -35,13 +40,37 @@ const ExpenseForm = () => {
 
 		let amount = parseFloat(inputCantidad).toFixed(2)
 
-		addExpense({
-			category: categoria,
-			description: inputDescription,
-			amount: amount,
-			date: getUnixTime(date),
-			uidUser: usuario.uid,
-		})
+		//Check if Description and Value exist
+		if (inputDescription !== '' && inputCantidad !== '') {
+			if (amount) {
+				addExpense({
+					category: categoria,
+					description: inputDescription,
+					amount: amount,
+					date: getUnixTime(date),
+					uidUser: usuario.uid,
+				})
+					.then(() => {
+						setCategoria('hogar')
+						setInputDescription('')
+						setInputCantidad('')
+						setFecha(new Date())
+
+						setEstadoAlerta(true)
+						setAlerta({ tipo: 'exito', message: 'Expense added successfully!' })
+					})
+					.catch((error) => {
+						setEstadoAlerta(true)
+						setAlerta({ tipo: 'error', message: error.message })
+					})
+			} else {
+				setEstadoAlerta(true)
+				setAlerta({ tipo: 'error', message: 'Invalid Amount' })
+			}
+		} else {
+			setEstadoAlerta(true)
+			setAlerta({ tipo: 'error', message: 'Inputs Empty' })
+		}
 	}
 
 	return (
@@ -73,6 +102,12 @@ const ExpenseForm = () => {
 					Add Expense <IconoPlus />
 				</Button>
 			</ButtonContainer>
+			<Alert
+				tipo={alerta.tipo}
+				message={alerta.message}
+				estadoAlerta={estadoAlerta}
+				setEstadoAlerta={setEstadoAlerta}
+			/>
 		</Form>
 	)
 }
