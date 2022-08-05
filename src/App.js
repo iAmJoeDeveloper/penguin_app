@@ -4,6 +4,7 @@ import { Header, Title, ContainerHeader, ContainerButtons } from './elements/Hea
 import Button from './elements/Button'
 import CloseSesionButton from './elements/CloseSesionButton'
 import ExpenseForm from './components/ExpenseForm'
+import TotalSpentBar from './components/TotalSpentBar'
 
 const App = () => {
 	return (
@@ -23,6 +24,7 @@ const App = () => {
 			</Header>
 
 			<ExpenseForm />
+			<TotalSpentBar />
 		</>
 	)
 }
