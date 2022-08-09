@@ -4,7 +4,7 @@ import theme from '../theme'
 import convertToCurrency from './../functions/convertToCurrency'
 
 const TotalBar = styled.div`
-	background: ${theme.verde};
+	background: ${theme.blue};
 	font-size: 1.25rem; /* 20px */
 	letter-spacing: 1px;
 	font-weight: 500;
