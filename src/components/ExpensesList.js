@@ -7,8 +7,6 @@ import useGetData from '../hooks/useGetData'
 import {
 	Lista,
 	ElementoLista,
-	ListaDeCategorias,
-	ElementoListaCategorias,
 	Categoria,
 	Descripcion,
 	Valor,
@@ -84,9 +82,13 @@ const ExpensesList = () => {
 						</div>
 					)
 				})}
-				<ContenedorBotonCentral>
-					<BotonCargarMas>Load More</BotonCargarMas>
-				</ContenedorBotonCentral>
+
+				{moreExpenses && (
+					<ContenedorBotonCentral>
+						<BotonCargarMas onClick={() => getMoreExpenses()}>Load More</BotonCargarMas>
+					</ContenedorBotonCentral>
+				)}
+
 				{expenses.length === 0 && (
 					<ContenedorSubtitulo>
 						<Subtitulo>There are not expenses to show</Subtitulo>
