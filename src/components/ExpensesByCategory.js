@@ -3,6 +3,7 @@ import { Header, Title } from './../elements/Header'
 import { Helmet } from 'react-helmet'
 import BtnBack from '../elements/BtnBack'
 import TotalSpentBar from './TotalSpentBar'
+import useGetMonthExpenses from '../hooks/useGetMonthExpenses'
 
 const ExpensesByCategory = () => {
 	return (
