@@ -17,7 +17,7 @@ const EditExpense = () => {
 				<title>Edit Expense</title>
 			</Helmet>
 			<Header>
-				<BtnBack />
+				<BtnBack ruta='/list' />
 				<Title>Edit Expense</Title>
 			</Header>
 
