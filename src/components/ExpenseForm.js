@@ -10,14 +10,13 @@ import Button from '../elements/Button'
 import { ReactComponent as IconoPlus } from '../img/plus.svg'
 import SelectCategories from './SelectCategories'
 import DatePicker from './DatePicker'
-import fromUnixTime from 'date-fns/fromUnixTime'
 import getUnixTime from 'date-fns/getUnixTime'
 import addExpense from '../firebase/addExpense'
 import { useAuth } from '../context/AuthContext'
 import Alert from '../elements/Alert'
 import { setDate } from 'date-fns'
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ expense }) => {
 	const [inputDescription, setInputDescription] = useState('')
 	const [inputCantidad, setInputCantidad] = useState('')
 	const [categoria, setCategoria] = useState('hogar')

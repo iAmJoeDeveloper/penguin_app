@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Title, ContainerHeader, ContainerButtons } from './../elements/Header'
+import { Header, Title } from './../elements/Header'
 import { Helmet } from 'react-helmet'
 import BtnBack from '../elements/BtnBack'
 import TotalSpentBar from './TotalSpentBar'
