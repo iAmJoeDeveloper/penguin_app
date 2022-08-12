@@ -12,7 +12,7 @@ const TotalSpentProvider = ({ children }) => {
 	useEffect(() => {
 		let acumulado = parseInt(0)
 		expenses.forEach((expense) => {
-			console.log((acumulado += parseInt(expense.amount)))
+			acumulado += parseInt(expense.amount)
 		})
 
 		setTotal(acumulado)
