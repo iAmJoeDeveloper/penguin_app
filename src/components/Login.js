@@ -5,15 +5,24 @@ import { Header, Title, ContainerHeader } from './../elements/Header'
 import Button from './../elements/Button'
 import { Form, Input, ButtonContainer } from './../elements/FormElements'
 import { ReactComponent as Svglogin } from './../img/login.svg'
+import penguin from '../img/pplogo.png'
 import styled from 'styled-components'
 import { auth } from './../firebase/firebaseconfig'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import Alert from '../elements/Alert'
 
-const Svg = styled(Svglogin)`
+const Svg = styled.img`
+	width: 25%;
+	height: 100%;
+	max-height: 12.5rem;
+	/*100px*/
+	margin-bottom: 1.25rem;
+	/*20px*/
+`
+
+const Box = styled.div`
 	width: 100%;
-	max-height: 12.5rem; /*100px*/
-	margin-bottom: 1.25rem; /*20px*/
+	text-align: center;
 `
 
 const Login = () => {
@@ -96,7 +105,10 @@ const Login = () => {
 			</Header>
 
 			<Form onSubmit={handleSubmit}>
-				<Svg />
+				<Box>
+					<Svg src={penguin} />
+				</Box>
+				{/* <img src={penguin} alt='' /> */}
 				<Input
 					type='email'
 					name='email'

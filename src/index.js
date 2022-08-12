@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+//import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
 import WebFont from 'webfontloader'
@@ -11,7 +12,7 @@ import Login from './components/Login'
 import ExpensesList from './components/ExpensesList'
 import Register from './components/Register'
 import { Helmet } from 'react-helmet'
-import favicon from './img/logo.png'
+import favicon from './img/pplogo.png'
 import Background from './elements/Background'
 import { AuthProvider } from './context/AuthContext'
 import PrivateRoute from './components/PrivateRoute'
@@ -80,6 +81,9 @@ const Index = () => {
 		</>
 	)
 }
+
+// const root = createRoot(App)
+// root.render(<Index />, document.getElementById('root'))
 
 ReactDOM.render(<Index />, document.getElementById('root'))
 

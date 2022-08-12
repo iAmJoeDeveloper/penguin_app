@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Header, Title, ContainerHeader } from './../elements/Header'
 import Button from './../elements/Button'
 import { Form, Input, ButtonContainer } from './../elements/FormElements'
+import penguin from '../img/pplogo.png'
 import { ReactComponent as Svglogin } from './../img/registro.svg'
 import styled, { createGlobalStyle } from 'styled-components'
 import { auth } from './../firebase/firebaseconfig'
@@ -10,10 +11,18 @@ import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import Alert from '../elements/Alert'
 
-const Svg = styled(Svglogin)`
+const Svg = styled.img`
+	width: 10%;
+	height: 70%;
+	max-height: 12.5rem;
+	/*100px*/
+	margin-bottom: 1.25rem;
+	/*20px*/
+`
+
+const Box = styled.div`
 	width: 100%;
-	max-height: 6.25rem; /*100px*/
-	margin-bottom: 1.25rem; /*20px*/
+	text-align: center;
 `
 
 const Register = () => {
@@ -113,7 +122,9 @@ const Register = () => {
 			</Header>
 
 			<Form onSubmit={handleSubmit}>
-				<Svg />
+				<Box>
+					<Svg src={penguin} />
+				</Box>
 				<Input
 					type='email'
 					name='email'

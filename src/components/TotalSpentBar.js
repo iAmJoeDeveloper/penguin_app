@@ -5,7 +5,7 @@ import convertToCurrency from './../functions/convertToCurrency'
 import { useTotalDelMes } from '../context/TotalSpentMontContext'
 
 const TotalBar = styled.div`
-	background: ${theme.blue};
+	background: ${theme.yellow};
 	font-size: 1.25rem; /* 20px */
 	letter-spacing: 1px;
 	font-weight: 500;
