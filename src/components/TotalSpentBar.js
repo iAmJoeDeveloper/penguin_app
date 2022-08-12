@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../theme'
 import convertToCurrency from './../functions/convertToCurrency'
+import { useTotalDelMes } from '../context/TotalSpentMontContext'
 
 const TotalBar = styled.div`
 	background: ${theme.blue};
@@ -23,10 +24,12 @@ const TotalBar = styled.div`
 `
 
 const TotalSpentBar = () => {
+	const { total } = useTotalDelMes()
+
 	return (
 		<TotalBar>
 			<p>Total Gastado en el mes</p>
-			<p>{convertToCurrency(0)}</p>
+			<p>{convertToCurrency(total)}</p>
 		</TotalBar>
 	)
 }

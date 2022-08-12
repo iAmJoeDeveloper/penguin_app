@@ -15,6 +15,7 @@ import favicon from './img/logo.png'
 import Background from './elements/Background'
 import { AuthProvider } from './context/AuthContext'
 import PrivateRoute from './components/PrivateRoute'
+import { TotalSpentProvider } from './context/TotalSpentMontContext'
 
 WebFont.load({
 	google: {
@@ -29,48 +30,50 @@ const Index = () => {
 				<link rel='shortcut icon' href={favicon} type='image/x-icon' />
 			</Helmet>
 			<AuthProvider>
-				<BrowserRouter>
-					<Container>
-						<Routes>
-							<Route path='/login' element={<Login />} />
-							<Route path='/register' element={<Register />} />
+				<TotalSpentProvider>
+					<BrowserRouter>
+						<Container>
+							<Routes>
+								<Route path='/login' element={<Login />} />
+								<Route path='/register' element={<Register />} />
 
-							{/* Private Routes */}
-							<Route
-								path='/categories'
-								element={
-									<PrivateRoute>
-										<ExpensesByCategory />
-									</PrivateRoute>
-								}
-							/>
-							<Route
-								path='/list'
-								element={
-									<PrivateRoute>
-										<ExpensesList />
-									</PrivateRoute>
-								}
-							/>
-							<Route
-								path='/edit/:id'
-								element={
-									<PrivateRoute>
-										<EditExpense />
-									</PrivateRoute>
-								}
-							/>
-							<Route
-								path='/'
-								element={
-									<PrivateRoute>
-										<App />
-									</PrivateRoute>
-								}
-							/>
-						</Routes>
-					</Container>
-				</BrowserRouter>
+								{/* Private Routes */}
+								<Route
+									path='/categories'
+									element={
+										<PrivateRoute>
+											<ExpensesByCategory />
+										</PrivateRoute>
+									}
+								/>
+								<Route
+									path='/list'
+									element={
+										<PrivateRoute>
+											<ExpensesList />
+										</PrivateRoute>
+									}
+								/>
+								<Route
+									path='/edit/:id'
+									element={
+										<PrivateRoute>
+											<EditExpense />
+										</PrivateRoute>
+									}
+								/>
+								<Route
+									path='/'
+									element={
+										<PrivateRoute>
+											<App />
+										</PrivateRoute>
+									}
+								/>
+							</Routes>
+						</Container>
+					</BrowserRouter>
+				</TotalSpentProvider>
 			</AuthProvider>
 
 			<Background />

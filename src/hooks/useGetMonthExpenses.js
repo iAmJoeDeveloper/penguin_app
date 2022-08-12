@@ -1,28 +1,28 @@
-import { getUnixTime, startOfMonth, endOfMonth } from 'date-fns'
 import { useState, useEffect } from 'react'
-import { db } from '../firebase/firebaseconfig'
-import { useAuth } from '../context/AuthContext'
+import { db } from './../firebase/firebaseconfig'
+import { startOfMonth, endOfMonth, getUnixTime } from 'date-fns'
+import { useAuth } from './../context/AuthContext'
 import { collection, onSnapshot, query, orderBy, where } from 'firebase/firestore'
 
 const useGetMonthExpenses = () => {
 	const [expenses, setExpenses] = useState([])
-	const [usuario] = useAuth()
+	const { usuario } = useAuth()
 
 	useEffect(() => {
 		const inicioDeMes = getUnixTime(startOfMonth(new Date()))
 		const finDeMes = getUnixTime(endOfMonth(new Date()))
 
 		if (usuario) {
-			const request = query(
+			const consulta = query(
 				collection(db, 'expenses'),
 				orderBy('date', 'desc'),
 				where('date', '>=', inicioDeMes),
 				where('date', '<=', finDeMes),
-				where('uidUser', '==', usuario.id)
+				where('uidUser', '==', usuario.uid)
 			)
 
 			const unsuscribe = onSnapshot(
-				request,
+				consulta,
 				(snapshot) => {
 					setExpenses(
 						snapshot.docs.map((documento) => {
@@ -35,6 +35,8 @@ const useGetMonthExpenses = () => {
 				}
 			)
 
+			// Use Effect tiene que retornar una funcion que se va a ejecutar cuando se desmonte el componente.
+			// En este caso queremos que ejecute el unsuscribe a la coleccion de firestore.
 			return unsuscribe
 		}
 	}, [usuario])
